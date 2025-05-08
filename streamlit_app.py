@@ -24,7 +24,7 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 #Convert the snowpark Datafram to a Padas Datafram so can use the LOC function.
 pd_df=my_dataframe.to_pandas()
 st.dataframe(pd_df)
-st.stop()
+#st.stop()
                                                                                             
 # Convert Snowpark DataFrame to a list of values
 fruit_list = [row['FRUIT_NAME'] for row in my_dataframe.collect()]
