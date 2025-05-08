@@ -3,9 +3,7 @@ import streamlit as st
 from snowflake.snowpark.functions import col
 import requests
 
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response.json())
-
+ 
 st.title('Smoothie Shoppee')
 
 # Write directly to the app
@@ -24,7 +22,10 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 
 # Convert Snowpark DataFrame to a list of values
 fruit_list = [row['FRUIT_NAME'] for row in my_dataframe.collect()]
- 
+
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response.json())
+
 
 #ingredients_list = st.multiselect(
  #   "choose up to 5 ingredients",     
